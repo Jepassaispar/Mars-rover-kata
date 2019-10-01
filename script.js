@@ -445,8 +445,3 @@ function commands (expr) {
 }}
 
 let travelLog = []
-
-let xcoordinates = [
-    x : -5
-    x 
-]
