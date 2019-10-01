@@ -10,443 +10,144 @@ let rover = {
     y : 0,
 }
 
+// Turn Left Function
 // ======================
 function turnLeft(rover){
     switch(rover.direction) {
         case 'N':
             rover.direction= "W";
-            console.log("Rover is facing : "+ rover.direction)
         break;
         case 'S':
             rover.direction= "E";
-            console.log("Rover is facing : "+ rover.direction)
         break;
         case 'E':
             rover.direction= "N";
-            console.log("Rover is facing : "+ rover.direction)
         break;
         case 'W':
             rover.direction= "S";
-            console.log("Rover is facing : "+ rover.direction)
     }
+    console.log("Rover is facing : "+ rover.direction)
 }
-  
-  function turnRight(rover){
+
+// Turn Right Function
+// ======================
+function turnRight(rover){
     switch(rover.direction) {
-        case 'N':
-            rover.direction= "E";
-            console.log("Rover is facing : "+ rover.direction)
+    case 'N':
+        rover.direction= "E";
+    break;
+    case 'S':
+        rover.direction= "W";
+    break;
+    case 'E':
+        rover.direction= "S";
+    break;
+    case 'W':
+        rover.direction= "N";
+    }  
+    console.log("Rover is facing : "+ rover.direction)
+}
+
+// Move Forward Function
+// ======================
+function moveForward(rover){
+    switch(rover.direction) {
+        case 'N' :
+            if (rover.y<5) {
+                rover.y=rover.y+1;
+            }
+            else {
+                console.log("Map limit reached")
+            }
         break;
-        case 'S':
-            rover.direction= "W";
-            console.log("Rover is facing : "+ rover.direction)
+        case 'S' :
+            if (rover.y>-5) {
+                rover.y=rover.y-1
+            }
+            else {
+                console.log("Map limit reached")
+            }
         break;
         case 'E':
-            rover.direction= "S";
-            console.log("Rover is facing : "+ rover.direction)
+            if (rover.x<5) {
+                rover.x=rover.x+1
+            }
+            else {
+                console.log("Map limit reached")
+            }
         break;
         case 'W':
-            rover.direction= "N";
-            console.log("Rover is facing : "+ rover.direction)
-    }  
-}
-  
-  function moveForward(rover){
-    if ((rover.y<5) && (rover.y>-5) && (rover.x<5) && (rover.x>-5)) {
-        switch(rover.direction) {
-            case 'N':
-                rover.y=rover.y +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'S':
-                rover.y=rover.y -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'E':
-                rover.x=rover.x +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'W':
-                rover.x=rover.x -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
+            if (rover.x>-5) {
+                rover.x=rover.x-1
+            }
+            else {
+                console.log("Map limit reached")
+            }
         }
+    console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
+    travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
     }
-    else if ((rover.y = 5) && (rover.x<5) && (rover.x>-5)){
-        switch(rover.direction) {
-            case 'N':
-                console.log("You have reached the north limit of the map, you can't go further");
-            break;
-            case 'S':
-                rover.y=rover.y -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'E':
-                rover.x=rover.x +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'W':
-                rover.x=rover.x -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-        }
-    }
-    else if ((rover.y = -5) && (rover.x<5) && (rover.x>-5)){
-        switch(rover.direction) {
-            case 'N':
-                rover.y=rover.y +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'S':
-                    console.log("You have reached the west limit of the map, you can't go further");
-            break;
-            case 'E':
-                rover.x=rover.x +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'W':
-                rover.x=rover.x -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-        }
-    }
-    else if ((rover.x = 5) && (rover.y<5) && (rover.y>-5)){
-        switch(rover.direction) {
-            case 'N':
-                rover.y=rover.y +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'S':
-                rover.y=rover.y -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'E':
-                console.log("You have reached the east limit of the map, you can't go further");
-            break;
-            case 'W':
-                rover.x=rover.x -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-        }
-    }
-    else if ((rover.x = -5) && (rover.y<5) && (rover.y>-5)){
-        switch(rover.direction) {
-            case 'N':
-                rover.y=rover.y +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'S':
-                rover.y=rover.y -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'E':
-                rover.x=rover.x -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'W':
-                console.log("You have reached the west limit of the map, you can't go further");
-        }
-    }
-    else if ((rover.x = 5) && (rover.y = -5)) {
-        switch(rover.direction) {
-            case 'N':
-                rover.y=rover.y +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'S':
-                console.log("You are in a corner, change the direction or go backward in order to move")
-            break;
-            case 'E':
-                console.log("You are in a corner, change the direction or go backward in order to move")
-            break;
-            case 'W':
-                rover.x=rover.x -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-        }
-    }
-    else if ((rover.x = 5) && (rover.y = 5)) {
-        switch(rover.direction) {
-            case 'N':
-                console.log("You are in a corner, change the direction or go backward in order to move")
-            break;
-            case 'S':
-                rover.y=rover.y -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'E':
-                console.log("You are in a corner, change the direction or go backward in order to move")
-            break;
-            case 'W':
-                rover.x=rover.x -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-        }
-    }
-    else if ((rover.x = -5) && (rover.y = 5)) {
-        switch(rover.direction) {
-            case 'N':
-                console.log("You are in a corner, change the direction or go backward in order to move")
-            break;
-            case 'S':
-                rover.y=rover.y -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'E':
-                rover.x=rover.x +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'W':
-                console.log("You are in a corner, change the direction or go backward in order to move")
-        }
-    }
-    else if ((rover.x = -5) && (rover.y = -5)) {
-        switch(rover.direction) {
-            case 'N':
-                rover.y=rover.y +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'S':
-                console.log("You are in a corner, change the direction or go backward in order to move")
-            break;
-            case 'E':
-                rover.x=rover.x +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'W':
-                console.log("You are in a corner, change the direction or go backward in order to move")
-        }
-    }
-}
 
-function moveBackwards(rover){
-    if ((rover.y<5) && (rover.y>-5) && (rover.x<5) && (rover.x>-5)) {
-        switch(rover.direction) {
-            case 'N':
-                rover.y=rover.y -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'S':
-                rover.y=rover.y +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'E':
-                rover.x=rover.x -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'W':
-                rover.x=rover.x +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-        }
+// Move Backward Function
+// ======================
+function moveBackward(rover){
+    switch(rover.direction) {
+        case 'N' :
+            if (rover.y>-5) {
+                rover.y=rover.y-1;
+            }
+            else {
+                console.log("Map limit reached")
+            }
+        break;
+        case 'S' :
+            if (rover.y<5) {
+                rover.y=rover.y+1
+            }
+            else {
+                console.log("Map limit reached")
+            }
+        break;
+        case 'E':
+            if (rover.x>-5) {
+                rover.x=rover.x-1
+            }
+            else {
+                console.log("Map limit reached")
+            }
+        break;
+        case 'W':
+            if (rover.x<5) {
+                rover.x=rover.x+1
+            }
+            else {
+                console.log("Map limit reached")
+            }
     }
-    else if ((rover.y = 5) && (rover.x<5) && (rover.x>-5)){
-        switch(rover.direction) {
-            case 'N':
-                rover.y=rover.y -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)            
-            break;
-            case 'S':
-                console.log("You have reached the west limit of the map, you can't go further");
-            break;
-            case 'E':
-                rover.x=rover.x -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'W':
-                rover.x=rover.x +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-        }
-    }
-    else if ((rover.y = -5) && (rover.x<5) && (rover.x>-5)){
-        switch(rover.direction) {
-            case 'N':
-                console.log("You have reached the south limit of the map, you can't go further");
-            break;
-            case 'S':
-                rover.y=rover.y +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'E':
-                rover.x=rover.x -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'W':
-                rover.x=rover.x +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-        }
-    }
-    else if ((rover.x = 5) && (rover.y<5) && (rover.y>-5)){
-        switch(rover.direction) {
-            case 'N':
-                rover.y=rover.y -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'S':
-                rover.y=rover.y +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'E':
-                rover.x=rover.x -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'W':
-                console.log("You have reached the east limit of the map, you can't go further");
-        }
-    }
-    else if ((rover.x = -5) && (rover.y<5) && (rover.y>-5)){
-        switch(rover.direction) {
-            case 'N':
-                rover.y=rover.y -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'S':
-                rover.y=rover.y +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'E':
-                console.log("You have reached the west limit of the map, you can't go further");
-            break;
-            case 'W':
-                rover.x=rover.x +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-        }
-    }
-    else if ((rover.x = 5) && (rover.y = -5)) {
-        switch(rover.direction) {
-            case 'N':
-                console.log("You are in a corner, change the direction or go forward in order to move")
-            break;
-            case 'S':
-                rover.y=rover.y +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'E':
-                rover.x=rover.x -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'W':
-                console.log("You are in a corner, change the direction or go forward in order to move")
-        }
-    }
-    else if ((rover.x = 5) && (rover.y = 5)) {
-        switch(rover.direction) {
-            case 'N':
-                rover.y=rover.y -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'S':
-                console.log("You are in a corner, change the direction or go forward in order to move")
-            break;
-            case 'E':
-                rover.x=rover.x -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'W':
-                console.log("You are in a corner, change the direction or go forward in order to move")
-        }
-    }
-    else if ((rover.x = -5) && (rover.y = 5)) {
-        switch(rover.direction) {
-            case 'N':
-                rover.y=rover.y -1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'S':
-                console.log("You are in a corner, change the direction or go forward in order to move")
-            break;
-            case 'E':
-                console.log("You are in a corner, change the direction or go forward in order to move")
-            break;
-            case 'W':
-                rover.x=rover.x +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-        }
-    }
-    else if ((rover.x = -5) && (rover.y = -5)) {
-        switch(rover.direction) {
-            case 'N':
-                console.log("You are in a corner, change the direction or go forward in order to move")
-            break;
-            case 'S':
-                rover.y=rover.y +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-            break;
-            case 'E':
-                console.log("You are in a corner, change the direction or go forward in order to move")
-            break;
-            case 'W':
-                rover.x=rover.x +1;
-                console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-                travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
-        }
-    }
+    console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
+    travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
 }
-
-
-function commands (expr) {
+    
+// Command Function
+// ======================
+function command (expr) {
     for(var i=0 ; i<expr.length; i++){
-        var a = expr.charAt(i);
-        if (a == "f") {
+        var command = expr.charAt(i);
+        if (command == "f") {
             moveForward(rover);
         }
-        else if (a == "r") {
+        else if (command == "r") {
             turnRight(rover);
         }
-        else if (a == "l") {
+        else if (command == "l") {
             turnLeft(rover)
         }
-        else if (a == "b") {
-            moveBackwards(rover)
+        else if (command == "b") {
+            moveBackward(rover)
         }
         else {
-            console.log("command " + a + " is not valid")
+            console.log("command " + command + " is not valid")
         }
 }}
 
 let travelLog = []
-
-let xcoordinates = [
-    x : -5
-    x 
-]
