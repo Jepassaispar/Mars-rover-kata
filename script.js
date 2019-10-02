@@ -1,3 +1,22 @@
+// Variables
+// ======================
+
+function displayDire() {
+    console.log("Rover is facing : "+ rover.direction)
+}
+function mapLimit() {
+    console.log("Map limit reached")
+}
+function displayCoor() {
+    console.log("coordinates are x : " + rover.x + " and y : " + rover.y)
+}
+function travelLogPush() {
+    travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
+}
+function commandNotValid() {
+    console.log("command " + command + " is not valid")
+}
+
 // Rover Object Goes Here
 // ======================
 
@@ -26,7 +45,7 @@ function turnLeft(rover){
         case 'W':
             rover.direction= "S";
     }
-    console.log("Rover is facing : "+ rover.direction)
+    displayDire()
 }
 
 // Turn Right Function
@@ -45,7 +64,7 @@ function turnRight(rover){
     case 'W':
         rover.direction= "N";
     }  
-    console.log("Rover is facing : "+ rover.direction)
+    displayDire()
 }
 
 // Move Forward Function
@@ -57,7 +76,7 @@ function moveForward(rover){
                 rover.y=rover.y+1;
             }
             else {
-                console.log("Map limit reached")
+                return mapLimit
             }
         break;
         case 'S' :
@@ -65,7 +84,7 @@ function moveForward(rover){
                 rover.y=rover.y-1
             }
             else {
-                console.log("Map limit reached")
+                return mapLimit
             }
         break;
         case 'E':
@@ -73,7 +92,7 @@ function moveForward(rover){
                 rover.x=rover.x+1
             }
             else {
-                console.log("Map limit reached")
+                return mapLimit
             }
         break;
         case 'W':
@@ -81,12 +100,12 @@ function moveForward(rover){
                 rover.x=rover.x-1
             }
             else {
-                console.log("Map limit reached")
+                return mapLimit
             }
-        }
-    console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-    travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
     }
+    displayCoor() 
+    travelLogPush()
+}
 
 // Move Backward Function
 // ======================
@@ -97,7 +116,7 @@ function moveBackward(rover){
                 rover.y=rover.y-1;
             }
             else {
-                console.log("Map limit reached")
+                return mapLimit
             }
         break;
         case 'S' :
@@ -105,7 +124,7 @@ function moveBackward(rover){
                 rover.y=rover.y+1
             }
             else {
-                console.log("Map limit reached")
+                return mapLimit
             }
         break;
         case 'E':
@@ -113,7 +132,7 @@ function moveBackward(rover){
                 rover.x=rover.x-1
             }
             else {
-                console.log("Map limit reached")
+                return mapLimit
             }
         break;
         case 'W':
@@ -121,11 +140,11 @@ function moveBackward(rover){
                 rover.x=rover.x+1
             }
             else {
-                console.log("Map limit reached")
+                return mapLimit
             }
     }
-    console.log("coordinates are x : " + rover.x + " and y : " + rover.y);
-    travelLog.push("coordinates are x : " + rover.x + " and y : " + rover.y)
+    displayCoor() ;
+    travelLogPush()
 }
     
 // Command Function
@@ -146,7 +165,7 @@ function command (expr) {
             moveBackward(rover)
         }
         else {
-            console.log("command " + command + " is not valid")
+        commandNotValid()
         }
 }}
 
